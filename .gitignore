@@ -14,3 +14,11 @@ node_modules/
 # Temporary files
 *.tmp
 *.log
+
+# Release artifacts (ZIP files should not be in git)
+*.zip
+
+# Design documents (not for public release)
+HOW_TO_USE.md
+PUBLISHING_INSTRUCTIONS.md
+RELEASE_NOTES_*.md

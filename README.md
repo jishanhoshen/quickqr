@@ -32,23 +32,33 @@ chrome-ext/
 ### Prerequisites
 - Google Chrome browser (or Chromium-based browser)
 
-### Steps
+### Option 1: Install from GitHub Release (Recommended)
 
-1. **Download or clone this repository** to your local machine
+1. Go to the [Releases](https://github.com/jishanhoshen/quickqr/releases) page
+2. Download the latest `quick-qr-v1.0.0.zip` file
+3. Extract the ZIP file to a directory on your computer
+4. Follow the "Load the Extension" steps below using the extracted directory
 
-2. **Open Chrome Extensions page**
+### Option 2: Install from Source
+
+1. Clone this repository to your local machine
+2. Follow the "Load the Extension" steps below using the cloned directory
+
+### Load the Extension
+
+1. **Open Chrome Extensions page**
    - Navigate to `chrome://extensions` in your browser
    - Or go to the Chrome menu (three dots) → More tools → Extensions
 
-3. **Enable Developer Mode**
+2. **Enable Developer Mode**
    - Toggle the "Developer mode" switch in the top-right corner
 
-4. **Load the Extension**
+3. **Load the Extension**
    - Click the "Load unpacked" button
-   - Select the `chrome-ext` directory containing the extension files
+   - Select the directory containing the extension files (either extracted from ZIP or cloned from repository)
    - The extension will appear in your extensions list
 
-5. **Pin the Extension** (optional)
+4. **Pin the Extension** (optional)
    - Click the puzzle piece icon in the Chrome toolbar
    - Find "Quick QR" and click the pin icon to keep it visible
 
@@ -137,3 +147,11 @@ The following features are out of scope for this MVP but could be added in futur
 ## License
 
 This project is provided as-is for educational and personal use.
+
+### Third-Party Licenses
+
+This extension uses the following third-party library:
+
+- **qrcodejs** (v1.0.0) - MIT License
+  - Repository: https://github.com/davidshimjs/qrcodejs
+  - Licensed under the MIT License - permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction
