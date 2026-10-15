@@ -11,30 +11,26 @@ chrome.runtime.onInstalled.addListener(() => {
 });
 
 function createContextMenus() {
-  // Remove existing menus if any
   chrome.contextMenus.removeAll(() => {
-    // Download image with Quick QR
     chrome.contextMenus.create({
       id: MENU_DOWNLOAD,
       title: 'Download image with Quick QR',
       contexts: ['image']
-    });
-
-    // Copy image URL
-    chrome.contextMenus.create({
-      id: MENU_COPY,
-      title: 'Copy image URL',
-      contexts: ['image']
-    });
-
-    // Find all images on this page
-    chrome.contextMenus.create({
-      id: MENU_FIND_ALL,
-      title: 'Find all images on this page',
-      contexts: ['image']
+    }, () => {
+      chrome.contextMenus.create({
+        id: MENU_COPY,
+        title: 'Copy image URL',
+        contexts: ['image']
+      }, () => {
+        chrome.contextMenus.create({
+          id: MENU_FIND_ALL,
+          title: 'Find all images on this page',
+          contexts: ['image']
+        });
+      });
     });
   });
-});
+}
 
 // Handle context menu clicks
 chrome.contextMenus.onClicked.addListener((info, tab) => {
@@ -63,7 +59,6 @@ function downloadImage(url, tab) {
   }, (downloadId) => {
     if (chrome.runtime.lastError) {
       console.error('Download failed:', chrome.runtime.lastError);
-      // Fallback: open in new tab
       chrome.tabs.create({ url: url });
     }
   });
@@ -75,7 +70,6 @@ function copyImageUrl(url, tab) {
     target: { tabId: tab.id },
     func: (urlToCopy) => {
       navigator.clipboard.writeText(urlToCopy).then(() => {
-        // Could show a notification here
         console.log('URL copied to clipboard');
       }).catch(err => {
         console.error('Failed to copy:', err);
@@ -87,7 +81,6 @@ function copyImageUrl(url, tab) {
 
 // Find all images - open extension gallery page
 function findAllImages(tab) {
-  // Open a new tab with the extension's image gallery
   chrome.tabs.create({
     url: chrome.runtime.getURL('gallery.html?tabId=' + tab.id)
   });
